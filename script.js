@@ -1,3 +1,28 @@
+class Panels {
+  constructor() {
+    this.mainButtons = document.getElementById("main").querySelectorAll("a");
+
+    this.addListeners();
+  }
+
+  addListeners() {
+    for (let element in this) {
+      for (let item of this[element]) {
+        console.log(item);
+        item.addEventListener("click", this.changePosition);
+      }
+    }
+  }
+
+  changePosition() {
+    siteWrap.style.top = this.getAttribute("data-top");
+    siteWrap.style.left = this.getAttribute("data-left");
+  }
+}
+
+let panels = new Panels();
+// console.log(panels.mainButtons);
+
 const siteWrap = document.getElementById("site-wrap");
 const mainPanel = document.getElementById("main");
 const upPanel = document.getElementById("up");
@@ -14,27 +39,20 @@ const upRightDownLeftBtn = upRightPanel.querySelector(
 );
 const upRightLeftBtn = upRightPanel.querySelector("[name='upRight-left']");
 
-console.log(mainUpBtn);
+// console.log(mainUpBtn);
 
-mainUpBtn.addEventListener("click", function () {
-  //   mainPanel.style.top = "100vh";
-  //   upPanel.style.top = "0";
-  siteWrap.style.top = "0";
-});
+// function changePosition() {
+//   siteWrap.style.top = this.getAttribute("data-top");
+//   siteWrap.style.left = this.getAttribute("data-left");
+// }
+
+// mainUpBtn.addEventListener("click", changePosition);
+// mainUpRightBtn.addEventListener("click", changePosition);
 
 upDownBtn.addEventListener("click", function () {
   //   mainPanel.style.top = "0";
   //   upPanel.style.top = "-100vh";
   siteWrap.style.top = "-100vh";
-});
-
-mainUpRightBtn.addEventListener("click", function () {
-  //   mainPanel.style.top = "100vh";
-  //   mainPanel.style.left = "-100vw";
-  //   upRightPanel.style.top = "0";
-  //   upRightPanel.style.left = "0";
-  siteWrap.style.top = "0";
-  siteWrap.style.left = "-100vw";
 });
 
 upRightDownLeftBtn.addEventListener("click", function () {
